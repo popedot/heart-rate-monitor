@@ -1,0 +1,105 @@
+
+
+.carousel {
+    padding: 180px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__wrapper {
+        padding: 0 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__window {   
+        width: 750px;
+        height: 527px;
+        overflow: hidden;
+    }
+
+    &__track {
+        display: flex;
+        transition: transform 0.5s;
+    }
+
+    &__img {
+        img {
+            width: 750px;
+            height: 527px;
+        }
+    }
+
+    &__prev {
+        width: 35px;
+        height: 70px;
+        cursor: pointer;
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 35px;
+            height: 10px;
+            background-color: $red-color;
+            border-radius: 3px;
+            transform: translate(0, 38px) rotate(45deg);
+            transition: background-color 0.1s;
+        }
+        &::before{
+            content: '';
+            position: absolute;
+            display: block;
+            width: 35px;
+            height: 10px;
+            background-color: $red-color;
+            border-radius: 3px;
+            transform: translate(0, 20px) rotate(-45deg);
+            transition: background-color 0.1s;
+        }
+        &:hover {
+            &::after {
+                background-color: $bordo-color;
+            }
+            &::before{
+                background-color: $bordo-color;
+            }
+        }
+    }
+
+    &__next {
+        width: 35px;
+        height: 70px;
+        cursor: pointer;
+        &::after {
+            content: '';
+            position: absolute;
+            display: block;
+            width: 35px;
+            height: 10px;
+            background-color: $red-color;
+            border-radius: 3px;
+            transform: translate(0px, 38px) rotate(-45deg);
+            transition: background-color 0.1s;
+        }
+        &::before{
+            content: '';
+            position: absolute;
+            display: block;
+            width: 35px;
+            height: 10px;
+            background-color: $red-color;
+            border-radius: 3px;
+            transform: translate(0px, 20px) rotate(45deg);
+            transition: background-color 0.1s;
+        }
+        &:hover {
+            &::after {
+                background-color: $bordo-color;
+            }
+            &::before{
+                background-color: $bordo-color;
+            }
+        }
+    }
+}

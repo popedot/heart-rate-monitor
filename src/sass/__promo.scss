@@ -1,0 +1,67 @@
+.promo {
+    padding: 24px 15% 0 15%;
+    min-height: 650px;
+    background: url('../images/header/running_woman.png') center (center/cover) no-repeat;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    &__header {
+        margin-top: 91px;
+        color: $white-color;
+        font-family: $main-font;
+        font-size: 42px;
+        line-height: 42px;
+        text-transform: uppercase;
+    }
+
+    &__subheader {
+        margin-top: 17px;
+        color: $white-color;
+        font-family: $main-font;
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 24px;
+        text-transform: uppercase;
+    }
+
+    &__icons {
+        margin-top: 67px;
+        display: flex;   
+    }
+
+    &__icon {
+        padding: 0 5%;
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        font-family: $main-font;
+        font-size: 14px;
+        font-weight: 400;
+        color: $white-color;
+        text-align: center;
+        img {
+            display: block;
+            width: 42px;
+            height: 46px;
+            margin-bottom: 20px;
+        }  
+    }
+
+    &__link {
+        margin-top: 18px;
+        color: $white-color;
+        font-family: $main-font;
+        font-size: 16px;
+        font-weight: 300;
+        a {
+            color: $white-color;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+    }
+    
+}

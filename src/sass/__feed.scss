@@ -1,0 +1,48 @@
+.feed {
+    display: flex;
+    justify-content: center;
+    padding: 103px 0 71px 0;
+
+    &__img {
+        display: block;
+        width: 169px;
+        height: 169px;
+    }
+
+    &__item {
+        margin-top: 100px;
+        display: flex;
+        justify-content: center;
+        &:nth-child(1){
+            margin-top: 70px;
+        }
+    }
+
+    &__text {
+        width: 650px;
+        margin-left: 61px;
+    }
+
+    &__subtitle {
+        color: $black-color;
+        font-family: $main-font;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    &__count {
+        margin-top: 10px;
+        color: #646464;
+        font-family: $main-font;
+        font-size: 14px;
+        font-weight: 300;
+    }
+
+    &__descr {
+        margin-top: 19px;
+        color: $black-color;
+        font-family: $main-font;
+        font-size: 16px;
+        font-weight: 300;
+    }
+}

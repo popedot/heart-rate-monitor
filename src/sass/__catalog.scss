@@ -1,0 +1,208 @@
+.catalog {
+    padding: 108px 0 0 0;
+    display: flex;
+    justify-content: center;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    &__header {
+        color: $black-color;
+        font-family: $main-font;
+        font-size: 30px;
+        font-weight: 700;
+    }
+
+    &__tabs {
+        margin-top: 69px;
+        width: 680px;
+        display: flex;
+        justify-content: center;
+    }
+
+    &__tab {
+        width: 220px;
+        height: 50px;
+        margin: 0 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid $gray-color;
+        transform: skewX(-25deg);
+        color: $gray-color;
+        font-family: $main-font;
+        font-size: 18px;
+        font-weight: 500;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.5s;
+
+        div {
+            transform: skewX(25deg);
+        }
+
+        &:hover {
+            box-shadow: 3px 3px 20px $bordo-color;
+            border: none;
+        }
+
+        &_active {
+            background-color: $red-color;
+            color: $white-color;
+        }
+    }
+
+    &__content {
+        margin-top: 75px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    &-item {
+        margin: 0 20px 20px 0;
+        padding: 20px 20px 20px 27px;
+        width: 300px;
+        height: 440px;
+        border: 2px solid #e8e8e8;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        &__main {
+            display: block;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        &__window {
+            position: relative;
+            width: 296px;
+            height: 370px;
+            overflow: hidden;
+        }
+    
+        &__track {
+            position: absolute;
+            display: flex;
+            transition: transform 0.5s;
+        }
+
+        &__main {
+            width: 296px;
+            height: 349px;
+        
+        }
+
+        &__detail {
+            width: 296px;
+            height: 349px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        
+
+        &__wrapper {
+            width: 296px;
+            height: 349px;
+            overflow: hidden;
+        }
+        
+        &__track {
+            display: flex;
+            transform: translate(0);
+        }
+
+        &__advantage {
+            width: 214px;
+            margin-bottom: 25px;
+            display: flex;
+            color: #555555;
+            font-family: $main-font;
+            font-size: 14px;
+            font-weight: 300;
+            text-align: left;
+            &::before {
+                position: absolute;
+                display: block;
+                content: '';
+                width: 5px;
+                height: 5px;
+                transform: translate(-15px, 5px);
+                background-color: $red-color;
+            }
+            &:nth-child(4) {
+                margin-bottom: 17px;
+            }
+        }
+        
+        &__subtitle {
+            margin-top: 20px;
+            color: $black-color;
+            font-family: $main-font;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        &__descr {
+            margin-top: 16px;
+            color: $black-color;
+            font-family: $main-font;
+            font-size: 14px;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        &__link {
+            cursor: pointer;
+            margin-top: 17px;
+            color: $red-color;
+            font-family: $main-font;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+
+        &__back {
+            cursor: pointer;
+            color: $red-color;
+            margin-top: 10px;
+            font-family: $main-font;
+            font-size: 14px;
+            font-weight: 500;
+            text-transform: uppercase;
+            text-decoration: underline;
+        }
+
+        &__footer {
+            display: flex;
+            justify-content: space-between;
+            div {
+                margin-right: 10px;
+            }
+        }
+
+        &__old-price {
+            color: #555555;
+            font-family: $main-font;
+            font-size: 14px;
+            font-weight: 300;
+            text-decoration: line-through;
+        }
+
+        &__price {
+            color: $black-color;
+            font-family: $main-font;
+            font-size: 19px;
+            font-weight: 700;
+            text-align: left;
+        }
+    }
+}

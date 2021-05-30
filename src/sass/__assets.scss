@@ -1,0 +1,15 @@
+$white-color: #fff;
+$red-color: #c70101;
+$bordo-color: #b00000;
+$black-color: #000;
+$gray-color: #d0d0d0;
+$main-font: "Museo Sans Cyrl";
+
+.title {
+    color: $black-color;
+    font-family: $main-font;
+    font-size: 30px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}

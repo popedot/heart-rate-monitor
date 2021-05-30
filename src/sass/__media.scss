@@ -1,0 +1,133 @@
+@media (max-width: 1400px) {
+    .advantages {
+
+        height: 940px;
+        &__icons {
+            flex-direction: column;
+        }
+    }
+
+    .consultation {
+        padding: 50px 20% 0 30%;
+        
+        &__header {
+            font-size: 20px;
+        }
+
+        &__subheader {
+            margin-top: 20px;
+            font-size: 15px;
+            padding-right: 20%;
+        }
+    }
+    
+}
+
+@media (max-width: 1200px) {
+    .promo {
+        padding: 24px 10% 0 10%;
+    }
+}
+
+@media (max-width: 992px) {
+    .promo {
+        padding: 24px 5% 0 5%;
+    }
+}
+
+@media (max-width: 767px) {
+    .header{
+        
+        &__official {
+            display: none;
+        }
+    }
+    .promo {
+        padding: 24px 5% 0 5%;
+
+        
+        &__header {
+            font-size: 35px;
+        }
+
+        &__subheader {
+            font-size: 19px;
+        }
+    } 
+
+    .consultation {
+        padding: 100px 10% 0 10%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+
+        &__header {
+            text-align: center;
+        }
+
+        &__subheader {
+            padding-right: 0;
+            text-align: center;
+        }
+
+        
+    }
+}
+
+@media (max-width: 577px) {
+    .header{
+
+        &__logo {
+            img {
+                width: 200px;
+            }
+        }
+
+        &__phone {
+            font-size: 17px;
+        }
+
+    }
+
+    .promo {
+        padding: 24px 5% 0 5%;
+
+        &__wrapper {
+            align-items: center;
+        }
+
+        &__header {
+            margin-top: 50px;
+            font-size: 30px;
+        }
+
+        &__subheader {
+            margin-top: 5px;
+            font-size: 17px;
+        }
+
+        &__icons {
+            margin-top: 35px;
+            flex-direction: column;
+        }
+
+        &__icon {
+            padding: 3% 5% 0 5%;
+        }
+
+    } 
+
+    .button {
+        height: 17px;
+        &_main {
+            margin-top: 35px;
+            height: 30px;
+        }
+
+        
+        &_submit {
+            height: 55px;
+        }
+    }
+}

@@ -1,0 +1,35 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+
+
+.container {
+    width: 1140px;
+}
+
+@import '__assets.scss';
+@import '__header.scss';
+@import '__promo.scss';
+@import '__advantages.scss';
+@import '__consultation.scss';
+@import '__button.scss';
+@import '__media.scss';
+@import '__fonts.scss';
+@import '__carousel.scss';
+@import '__catalog.scss';
+@import '__feed.scss';
+@import '__footer.scss';
+
+
+
+
+
+
+
+
