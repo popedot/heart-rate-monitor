@@ -1,3 +1,5 @@
+@import '__assets.scss';
+
 * {
     padding: 0;
     margin: 0;
@@ -8,12 +10,30 @@ ul {
     list-style-type: none;
 }
 
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #777877 $bordo-color;
+  }
+  
+  /* для Chrome/Edge/Safari */
+  *::-webkit-scrollbar {
+    height: 12px;
+    width: 12px;
+  }
+  *::-webkit-scrollbar-track {
+    background: $bordo-color;
+  }
+  *::-webkit-scrollbar-thumb {
+    background-color: #fff;
+    border-radius: 5px;
+    border: 3px solid $bordo-color;
+  }
+
 
 .container {
     width: 1140px;
 }
 
-@import '__assets.scss';
 @import '__header.scss';
 @import '__promo.scss';
 @import '__advantages.scss';
@@ -25,6 +45,8 @@ ul {
 @import '__catalog.scss';
 @import '__feed.scss';
 @import '__footer.scss';
+@import '__modal.scss';
+
 
 
 

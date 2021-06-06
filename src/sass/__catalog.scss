@@ -81,8 +81,7 @@
 
         &__window {
             position: relative;
-            width: 296px;
-            height: 370px;
+            height: 350px;
             overflow: hidden;
         }
     
@@ -93,9 +92,7 @@
         }
 
         &__main {
-            width: 296px;
-            height: 349px;
-        
+            margin: 0 40px 0 10px;
         }
 
         &__detail {
@@ -182,6 +179,7 @@
         }
 
         &__footer {
+            margin-top: 20px;
             display: flex;
             justify-content: space-between;
             div {

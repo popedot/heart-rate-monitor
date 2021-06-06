@@ -264,7 +264,6 @@ var btnsDetail = document.querySelectorAll(".catalog-item__link");
 var btnsBack = document.querySelectorAll(".catalog-item__back");
 var tracks = document.querySelectorAll(".catalog-item__track");
 var windowWidth = document.querySelector(".catalog-item__window").offsetWidth;
-console.log(windowWidth);
 btnsDetail.forEach(function (btnDetail, i) {
   btnDetail.addEventListener("click", function (e) {
     tracks.forEach(function (track, j) {
@@ -283,6 +282,132 @@ btnsBack.forEach(function (btnBack, i) {
     });
   });
 });
+},{}],"js/feed.js":[function(require,module,exports) {
+var feedSection = document.querySelector('.feed');
+var feedItems = document.querySelectorAll('.feed__item');
+window.addEventListener('scroll', function () {
+  var _this = this;
+
+  if (this.pageYOffset + document.documentElement.clientHeight >= feedSection.offsetTop) {
+    feedItems.forEach(function (feedItem) {
+      if (_this.pageYOffset + document.documentElement.clientHeight >= feedItem.offsetTop) {
+        feedItem.classList.add("feed__item_active");
+      }
+    });
+  }
+});
+},{}],"js/modal.js":[function(require,module,exports) {
+var button = document.querySelector(".button");
+var miniButtons = document.querySelectorAll(".button_mini");
+var consultation = document.querySelector("#consultation");
+var order = document.querySelector("#order");
+var thanks = document.querySelector("#thanks");
+var overlay = document.querySelector(".overlay");
+var closeX = document.querySelector(".modal__close");
+var submitButtons = document.querySelectorAll(".button__submit");
+
+function turnModel(idOfModel) {
+  overlay.style.display = "block";
+  idOfModel.style.display = "block";
+  setTimeout(0.1);
+  overlay.style.opacity = "100%";
+}
+
+button.addEventListener("click", function () {
+  return turnModel(consultation);
+});
+miniButtons.forEach(function (miniButton, i) {
+  miniButton.addEventListener("click", function () {
+    return turnModel(order);
+  });
+});
+
+function hideAllLabels(modal) {
+  if (e.originalTarget.nodeName == "BUTTON") {
+    e.target.classList.forEach(function (clazz) {
+      if (clazz == "button_submit") {
+        form = undefined;
+        modal.childNodes.forEach(function (node) {
+          if (node.nodeName == "FORM") {
+            form = node;
+          }
+        });
+        inputs = [];
+        labels = [];
+        form.childNodes.forEach(function (formNode) {
+          if (formNode.nodeName == "INPUT") inputs.push(formNode);else if (formNode.nodeName == "LABEL") labels.push(formNode);
+        });
+        inputs.forEach(function (input, i) {
+          if (input.value == "") {
+            labels[i].style.display = "block";
+            modal.style.height = "".concat(parseInt(getComputedStyle(modal).height, 10) + parseInt(getComputedStyle(labels[i]).height, 10), "px");
+          }
+        });
+      }
+    });
+  }
+}
+
+function checkStandartForm(modal) {
+  var modalInitailHeight = parseInt(getComputedStyle(modal).height, 10);
+  var labelsView = [];
+  modal.addEventListener("click", function (e) {
+    if (e.originalTarget.nodeName == "BUTTON") {
+      labelsView = [];
+      modal.style.height = "".concat(modalInitailHeight, "px");
+      e.target.classList.forEach(function (clazz) {
+        if (clazz == "button_submit") {
+          var _parseInt;
+
+          form = undefined;
+          modal.childNodes.forEach(function (node) {
+            if (node.nodeName == "FORM") {
+              form = node;
+            }
+          });
+          inputs = [];
+          labels = [];
+          form.childNodes.forEach(function (formNode) {
+            if (formNode.nodeName == "INPUT") inputs.push(formNode);else if (formNode.nodeName == "LABEL") {
+              formNode.style.display = "none";
+              labels.push(formNode);
+            }
+          });
+          inputs.forEach(function (input, i) {
+            if (input.value == "") labelsView.push(labels[i]);
+          });
+          labelsView.forEach(function (labelView) {
+            labelView.style.display = "block";
+          });
+          var labelHeight = (_parseInt = parseInt(getComputedStyle(labelsView[0]).height, 10)) !== null && _parseInt !== void 0 ? _parseInt : null;
+          modal.style.height = "".concat(modalInitailHeight + labelsView.length * 2 * labelHeight, "px");
+        }
+      });
+    }
+  });
+}
+
+function closeModal(modal) {
+  modal.childNodes.forEach(function (modalNode) {
+    console.log(modalNode);
+
+    if (modalNode.className == "modal__close") {
+      modalNode.addEventListener("click", function () {
+        modal.style.display = "none";
+        modal.style.display = "none";
+        modal.style.display = "none";
+        overlay.style.opacity = "0";
+        setTimeout(0.5);
+        overlay.style.display = "none";
+      });
+    }
+  });
+}
+
+checkStandartForm(consultation);
+checkStandartForm(order);
+closeModal(consultation);
+closeModal(order);
 },{}],"js/main.js":[function(require,module,exports) {
 "use strict";
 
@@ -293,7 +418,11 @@ require("./carousel");
 require("./catalog");
 
 require("./catalog-item");
-},{"../sass/style.scss":"sass/style.scss","./carousel":"js/carousel.js","./catalog":"js/catalog.js","./catalog-item":"js/catalog-item.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+require("./feed");
+
+require("./modal");
+},{"../sass/style.scss":"sass/style.scss","./carousel":"js/carousel.js","./catalog":"js/catalog.js","./catalog-item":"js/catalog-item.js","./feed":"js/feed.js","./modal":"js/modal.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -321,7 +450,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50439" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61192" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
