@@ -298,15 +298,19 @@ window.addEventListener('scroll', function () {
 });
 },{}],"js/modal.js":[function(require,module,exports) {
 var button = document.querySelector(".button");
+var buttonMain = document.querySelector(".button_main");
 var miniButtons = document.querySelectorAll(".button_mini");
 var consultation = document.querySelector("#consultation");
 var order = document.querySelector("#order");
 var thanks = document.querySelector("#thanks");
 var overlay = document.querySelector(".overlay");
-var closeX = document.querySelector(".modal__close");
 var submitButtons = document.querySelectorAll(".button__submit");
+var consultationButton = document.getElementById("consultation-button");
+var orderButton = document.getElementById("order-button");
+var orderForm = document.getElementById("order-form");
+var consultationForm = document.getElementById("consultation-form");
 
-function turnModel(idOfModel) {
+function showModel(idOfModel) {
   overlay.style.display = "block";
   idOfModel.style.display = "block";
   setTimeout(0.1);
@@ -314,11 +318,14 @@ function turnModel(idOfModel) {
 }
 
 button.addEventListener("click", function () {
-  return turnModel(consultation);
+  return showModel(consultation);
+});
+buttonMain.addEventListener("click", function () {
+  return showModel(consultation);
 });
 miniButtons.forEach(function (miniButton, i) {
   miniButton.addEventListener("click", function () {
-    return turnModel(order);
+    return showModel(order);
   });
 });
 
@@ -348,49 +355,8 @@ function hideAllLabels(modal) {
   }
 }
 
-function checkStandartForm(modal) {
-  var modalInitailHeight = parseInt(getComputedStyle(modal).height, 10);
-  var labelsView = [];
-  modal.addEventListener("click", function (e) {
-    if (e.originalTarget.nodeName == "BUTTON") {
-      labelsView = [];
-      modal.style.height = "".concat(modalInitailHeight, "px");
-      e.target.classList.forEach(function (clazz) {
-        if (clazz == "button_submit") {
-          var _parseInt;
-
-          form = undefined;
-          modal.childNodes.forEach(function (node) {
-            if (node.nodeName == "FORM") {
-              form = node;
-            }
-          });
-          inputs = [];
-          labels = [];
-          form.childNodes.forEach(function (formNode) {
-            if (formNode.nodeName == "INPUT") inputs.push(formNode);else if (formNode.nodeName == "LABEL") {
-              formNode.style.display = "none";
-              labels.push(formNode);
-            }
-          });
-          inputs.forEach(function (input, i) {
-            if (input.value == "") labelsView.push(labels[i]);
-          });
-          labelsView.forEach(function (labelView) {
-            labelView.style.display = "block";
-          });
-          var labelHeight = (_parseInt = parseInt(getComputedStyle(labelsView[0]).height, 10)) !== null && _parseInt !== void 0 ? _parseInt : null;
-          modal.style.height = "".concat(modalInitailHeight + labelsView.length * 2 * labelHeight, "px");
-        }
-      });
-    }
-  });
-}
-
 function closeModal(modal) {
   modal.childNodes.forEach(function (modalNode) {
-    console.log(modalNode);
-
     if (modalNode.className == "modal__close") {
       modalNode.addEventListener("click", function () {
         modal.style.display = "none";
@@ -402,12 +368,51 @@ function closeModal(modal) {
       });
     }
   });
-}
+} // checkForm(consultation)
 
-checkStandartForm(consultation);
-checkStandartForm(order);
+
+checkForm(consultationButton, consultationForm, consultation);
+checkForm(orderButton, orderForm, order);
 closeModal(consultation);
 closeModal(order);
+
+function checkForm(button, form, modal) {
+  var inputs = [],
+      labels = [],
+      emptyInputIndexes = [];
+  var initialModalHeight = parseInt(getComputedStyle(modal).height, 10);
+  button.addEventListener("click", function () {
+    toggleLabels(modal, initialModalHeight, emptyInputIndexes, labels, "none", true);
+    inputs = [];
+    labels = [];
+    emptyInputIndexes = [];
+    form.childNodes.forEach(function (formNode) {
+      if (formNode.nodeName == "INPUT") inputs.push(formNode);else if (formNode.nodeName == "LABEL") labels.push(formNode);
+    });
+    inputs.forEach(function (input, i) {
+      if (input.value == "") emptyInputIndexes.push(i);
+    });
+    toggleLabels(modal, initialModalHeight, emptyInputIndexes, labels, "block");
+  });
+}
+
+function toggleLabels(modal, initialModalHeight, inputIndexes, labels, displayMode) {
+  var rejectAddedHeight = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
+
+  if (inputIndexes.length != 0) {
+    var sumOfLabelsHeight = 0;
+    inputIndexes.forEach(function (i) {
+      labels[i].style.display = "".concat(displayMode);
+      var computedLabelHeight = parseInt(getComputedStyle(labels[i]).height, 10);
+      sumOfLabelsHeight += isNaN(computedLabelHeight) ? 0 : rejectAddedHeight == false ? computedLabelHeight : -computedLabelHeight;
+    });
+    modal.style.height = setModalHeight(modal, initialModalHeight, sumOfLabelsHeight);
+  }
+}
+
+function setModalHeight(modal, initialModalHeight, labelsHeight) {
+  modal.style.height = "".concat(initialModalHeight + 1.4 * labelsHeight, "px"); //1.4 constant added. Pay attention.
+}
 },{}],"js/main.js":[function(require,module,exports) {
 "use strict";
 
@@ -450,7 +455,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61192" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55812" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -97,7 +97,7 @@
                     <input name="phone" required="" placeholder="Ваш телефон" type="tel">
                     <input name="email" required="" placeholder="Ваш E-mail" type="email">
         
-                    <button type="submit" class="button button_submit">заказать кОНСУЛЬТАЦИЮ</button>
+                    <button type="submit" class="button button_submit consultation-btn_mt20">заказать кОНСУЛЬТАЦИЮ</button>
                 </form>
             </div>
         </div>
@@ -433,14 +433,14 @@
             <div class="modal__close">x</div>
             <div class="modal__subtitle">Просто <span>заполните форму заявки</span></div>
             <div class="modal__descr">и мы перезвоним вам в течении 10 минут</div>
-            <form action="POST" class="feed-form feed-form_mt25">
+            <form action="POST" id="consultation-form" class="feed-form feed-form_mt25">
                 <input name="name" placeholder="Ваше имя" type="text" class="error" aria-invalid="true">
                 <label id="name-error" class="error" for="name">Пожалуйста, введите свое имя</label> 
                 <input name="phone" placeholder="Ваш телефон" class="error">
                 <label id="phone-error" class="error" for="phone">Пожалуйста, введите свой номер телефона</label>
                 <input name="email" placeholder="Ваш E-mail" type="email" class="error">
                 <label id="email-error" class="error" for="email">Пожалуйста, введите свою почту</label> 
-                <button type="button" "="" class="button button_submit">заказать кОНСУЛЬТАЦИЮ</button>
+                <button type="button" "="" id="consultation-button" class="button button_submit">заказать кОНСУЛЬТАЦИЮ</button>
             </form>
         </div>
 
@@ -448,14 +448,14 @@
             <div class="modal__close">x</div>
             <div class="modal__subtitle">Ваш заказ:</div>
             <div class="modal__descr">Пульсометр Polar FT1</div>
-            <form action="POST" class="feed-form feed-form_mt25">
+            <form action="POST" id="order-form" class="feed-form feed-form_mt25">
                 <input name="name" placeholder="Ваше имя" type="text" class="error" aria-invalid="true">
                 <label id="name-error" class="error" for="name">Пожалуйста, введите свое имя</label> 
                 <input name="phone" placeholder="Ваш телефон" class="error">
                 <label id="phone-error" class="error" for="phone">Пожалуйста, введите свой номер телефона</label>
                 <input name="email" placeholder="Ваш E-mail" type="email" class="error">
                 <label id="email-error" class="error" for="email">Пожалуйста, введите свою почту</label> 
-                <button type="button" "="" class="button button_submit">Купить</button>
+                <button type="button" "="" id="order-button" class="button button_submit">Купить</button>
             </form>
         </div>
 
