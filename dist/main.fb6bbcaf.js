@@ -310,22 +310,21 @@ var orderButton = document.getElementById("order-button");
 var orderForm = document.getElementById("order-form");
 var consultationForm = document.getElementById("consultation-form");
 
-function showModel(idOfModel) {
+function showModel(idOfModel, overlay) {
   overlay.style.display = "block";
   idOfModel.style.display = "block";
-  setTimeout(0.1);
-  overlay.style.opacity = "100%";
+  fadeOutEffect(overlay);
 }
 
 button.addEventListener("click", function () {
-  return showModel(consultation);
+  return showModel(consultation, overlay);
 });
 buttonMain.addEventListener("click", function () {
-  return showModel(consultation);
+  return showModel(consultation, overlay);
 });
-miniButtons.forEach(function (miniButton, i) {
+miniButtons.forEach(function (miniButton) {
   miniButton.addEventListener("click", function () {
-    return showModel(order);
+    return showModel(order, overlay);
   });
 });
 
@@ -355,16 +354,11 @@ function hideAllLabels(modal) {
   }
 }
 
-function closeModal(modal) {
+function closeModal(modal, overlay) {
   modal.childNodes.forEach(function (modalNode) {
     if (modalNode.className == "modal__close") {
       modalNode.addEventListener("click", function () {
-        modal.style.display = "none";
-        modal.style.display = "none";
-        modal.style.display = "none";
-        overlay.style.opacity = "0";
-        setTimeout(0.5);
-        overlay.style.display = "none";
+        fadeInEffect(overlay, modal);
       });
     }
   });
@@ -373,8 +367,8 @@ function closeModal(modal) {
 
 checkForm(consultationButton, consultationForm, consultation);
 checkForm(orderButton, orderForm, order);
-closeModal(consultation);
-closeModal(order);
+closeModal(consultation, overlay);
+closeModal(order, overlay);
 
 function checkForm(button, form, modal) {
   var inputs = [],
@@ -413,6 +407,55 @@ function toggleLabels(modal, initialModalHeight, inputIndexes, labels, displayMo
 function setModalHeight(modal, initialModalHeight, labelsHeight) {
   modal.style.height = "".concat(initialModalHeight + 1.4 * labelsHeight, "px"); //1.4 constant added. Pay attention.
 }
+
+function fadeOutEffect(overlay) {
+  var overlayEffect = setInterval(function () {
+    if (overlay.style.opacity == "0" || !overlay.style.opacity) {
+      overlay.style.opacity = 1;
+    } else clearInterval(overlayEffect);
+  }, 200);
+}
+
+function fadeInEffect(overlay, modal) {
+  var overlayEffect = setInterval(function () {
+    var opacity = Number(getComputedStyle(overlay).opacity);
+    console.log();
+
+    if (overlay.style.opacity == "1") {
+      overlay.style.opacity = 0;
+    } else {
+      clearInterval(overlayEffect);
+      modal.style.display = "none";
+      overlay.style.display = "none";
+    }
+  }, 200);
+}
+},{}],"js/scrollActions.js":[function(require,module,exports) {
+var feedSection = document.querySelector(".feed");
+var catalogSection = document.querySelector(".catalog");
+var arrowUp = document.querySelector(".arrowup");
+var goToCatalog = document.querySelector(".promo__link");
+window.addEventListener("scroll", function () {
+  var scrolledHeight = document.documentElement.clientHeight + pageYOffset;
+
+  if (scrolledHeight >= feedSection.offsetTop) {
+    arrowUp.classList.remove("arrowup_hidden");
+  } else {
+    arrowUp.classList.add("arrowup_hidden");
+  }
+});
+arrowUp.addEventListener("click", function () {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+goToCatalog.addEventListener("click", function () {
+  window.scrollTo({
+    top: catalogSection.offsetTop,
+    behavior: 'smooth'
+  });
+});
 },{}],"js/main.js":[function(require,module,exports) {
 "use strict";
 
@@ -427,7 +470,9 @@ require("./catalog-item");
 require("./feed");
 
 require("./modal");
-},{"../sass/style.scss":"sass/style.scss","./carousel":"js/carousel.js","./catalog":"js/catalog.js","./catalog-item":"js/catalog-item.js","./feed":"js/feed.js","./modal":"js/modal.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+
+require("./scrollActions");
+},{"../sass/style.scss":"sass/style.scss","./carousel":"js/carousel.js","./catalog":"js/catalog.js","./catalog-item":"js/catalog-item.js","./feed":"js/feed.js","./modal":"js/modal.js","./scrollActions":"js/scrollActions.js"}],"../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -455,7 +500,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55812" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53809" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

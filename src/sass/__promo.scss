@@ -57,10 +57,13 @@
         font-family: $main-font;
         font-size: 16px;
         font-weight: 300;
-        a {
+        cursor: pointer;
+        div {
+            display: inline;
             color: $white-color;
             text-transform: uppercase;
             font-weight: 500;
+            text-decoration-line: underline;
         }
     }
     

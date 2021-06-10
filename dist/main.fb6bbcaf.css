@@ -106,11 +106,14 @@ ul {
   font-family: "Museo Sans Cyrl";
   font-size: 16px;
   font-weight: 300;
+  cursor: pointer;
 }
-.promo__link a {
+.promo__link div {
+  display: inline;
   color: #fff;
   text-transform: uppercase;
   font-weight: 500;
+  text-decoration-line: underline;
 }
 
 .advantages {
@@ -812,6 +815,22 @@ ul {
 
 #consultation, #order, #thanks {
   display: none;
+}
+
+.arrowup {
+  position: fixed;
+  right: 2.5%;
+  bottom: 10%;
+  transition: opacity 2s;
+  opacity: 100%;
+  cursor: pointer;
+}
+.arrowup_hidden {
+  opacity: 0;
+}
+
+.fa-col {
+  color: #c70101;
 }
 
 /*# sourceMappingURL=/main.fb6bbcaf.css.map */

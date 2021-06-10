@@ -11,19 +11,20 @@ const orderButton = document.getElementById("order-button")
 const orderForm = document.getElementById("order-form")
 const consultationForm = document.getElementById("consultation-form")
 
-function showModel(idOfModel) {
+
+
+function showModel(idOfModel, overlay) {
     overlay.style.display = "block"
-    idOfModel.style.display = "block"
-    setTimeout(0.1)
-    overlay.style.opacity = "100%" 
+    idOfModel.style.display = "block"  
+    fadeOutEffect(overlay)
 }
 
-button.addEventListener("click", () => showModel(consultation))
+button.addEventListener("click", () => showModel(consultation, overlay))
 
-buttonMain.addEventListener("click", () => showModel(consultation))
+buttonMain.addEventListener("click", () => showModel(consultation, overlay))
 
-miniButtons.forEach((miniButton, i) => {
-    miniButton.addEventListener("click", () => showModel(order))
+miniButtons.forEach((miniButton) => {
+    miniButton.addEventListener("click", () => showModel(order, overlay))
 })
 
 function hideAllLabels(modal) {
@@ -55,16 +56,11 @@ function hideAllLabels(modal) {
     }    
 }
 
-function closeModal(modal) {
+function closeModal(modal, overlay) {
     modal.childNodes.forEach(modalNode => {
         if(modalNode.className == ("modal__close")) {
             modalNode.addEventListener("click", () => {
-                modal.style.display = "none"
-                modal.style.display = "none" 
-                modal.style.display = "none" 
-                overlay.style.opacity = "0"
-                setTimeout(0.5)
-                overlay.style.display = "none" 
+                fadeInEffect(overlay, modal)
             })
         }
     })
@@ -73,8 +69,8 @@ function closeModal(modal) {
 // checkForm(consultation)
 checkForm(consultationButton, consultationForm, consultation)
 checkForm(orderButton, orderForm, order)
-closeModal(consultation)
-closeModal(order)
+closeModal(consultation, overlay)
+closeModal(order, overlay)
 
 function checkForm(button, form, modal) {
     let inputs = [], 
@@ -121,6 +117,32 @@ function toggleLabels(modal, initialModalHeight, inputIndexes, labels, displayMo
 function setModalHeight(modal, initialModalHeight, labelsHeight) {
     modal.style.height= `${initialModalHeight + 1.4*labelsHeight}px` //1.4 constant added. Pay attention.
 } 
+
+function fadeOutEffect(overlay) {
+    const overlayEffect = setInterval(() => {
+        if(overlay.style.opacity == "0" || !overlay.style.opacity)  {
+            overlay.style.opacity = 1
+        } 
+        else clearInterval(overlayEffect)
+    }, 200)
+}
+
+function fadeInEffect(overlay, modal) {
+    const overlayEffect = setInterval(() => {
+        const opacity = Number(getComputedStyle(overlay).opacity)
+        console.log()
+        if(overlay.style.opacity == "1")  {
+            overlay.style.opacity = 0
+        } 
+        else {
+            clearInterval(overlayEffect)
+            modal.style.display = "none"
+            overlay.style.display = "none"
+        }
+    }, 200)
+    
+}
+
 
 
 

@@ -1,0 +1,15 @@
+.arrowup {
+    position: fixed;
+    right: 2.5%;
+    bottom: 10%;
+    transition: opacity 2s;
+    opacity: 100%;
+    cursor: pointer;
+    &_hidden {
+        opacity: 0;
+    }
+}
+
+.fa-col {
+    color: $red-color;
+}
