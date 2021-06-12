@@ -140,6 +140,7 @@ ul {
   justify-content: space-between;
 }
 .advantages__icon {
+  padding: 0 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -175,6 +176,7 @@ ul {
   background: url("/shoes.37503890.png") center center/cover no-repeat;
 }
 .consultation__header {
+  padding-right: 40%;
   color: #fff;
   font-family: "Museo Sans Cyrl";
   font-size: 36px;
@@ -387,13 +389,6 @@ ul {
 
   .catalog__wrapper {
     width: 320px;
-  }
-
-  .feed__item {
-    width: 320px !important;
-  }
-  .feed__descr {
-    width: 320px !important;
   }
 
   .button_submit {
@@ -722,6 +717,7 @@ ul {
   opacity: 1;
 }
 .feed__text {
+  padding: 0 5%;
   max-width: 650px;
   margin-left: 61px;
 }
