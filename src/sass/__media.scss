@@ -181,10 +181,6 @@
             align-items: center!important;
 
         }
-
-        &__text {
-            // padding: 0 200px!important;
-        }
     }
 
     .footer {
@@ -217,28 +213,10 @@
     }
 
     .catalog {
-        // &__header {
-        //     width: 250px;
-        // }
-    }
-
-    .catalog {
         &__wrapper {
             width: 320px;
         }
     }
-
-    // .feed {
-
-    //     &__item {
-    //         width: 320px!important;
-    //     }
-
-    //     &__descr {
-    //         width: 320px!important;
-            
-    //     }
-    // }
 
     .button_submit {
         width: 250px;
