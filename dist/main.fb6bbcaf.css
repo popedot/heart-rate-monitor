@@ -18,7 +18,7 @@ ul {
 }
 
 .container {
-  width: 1140px;
+  max-width: 1140px;
 }
 
 .header {
@@ -41,7 +41,9 @@ ul {
 .header__contacts {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+}
+.header__contacts button {
+  margin-top: 10px;
 }
 .header__phone {
   text-decoration: none;
@@ -53,7 +55,9 @@ ul {
 }
 
 .promo {
-  padding: 24px 15% 0 15%;
+  padding: 24px 25px 0 25px;
+  display: flex;
+  justify-content: center;
   min-height: 650px;
   background: url("/running_woman.01aea5ce.png") center center/cover no-repeat;
 }
@@ -186,7 +190,7 @@ ul {
   font-weight: 500;
 }
 .consultation__wrapper {
-  padding: 0 264px 0 103px;
+  padding: 0 0 0 103px;
 }
 .consultation__form {
   margin-top: 1%;
@@ -247,27 +251,33 @@ ul {
   .advantages__icons {
     flex-direction: column;
   }
-
-  .consultation {
-    padding: 50px 20% 0 30%;
-  }
-  .consultation__header {
-    font-size: 20px;
-  }
-  .consultation__subheader {
+  .advantages__icon {
     margin-top: 20px;
-    font-size: 15px;
-    padding-right: 20%;
   }
-}
-@media (max-width: 1200px) {
-  .promo {
-    padding: 24px 10% 0 10%;
+  .advantages__icon :nth-child(1) {
+    margin-top: 0;
   }
 }
 @media (max-width: 992px) {
-  .promo {
-    padding: 24px 5% 0 5%;
+  .carousel {
+    display: none;
+  }
+
+  .consultation__header {
+    font-size: 25px;
+  }
+  .consultation__subheader {
+    font-size: 15px;
+  }
+
+  .carousel {
+    display: none !important;
+  }
+
+  .feed__item {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center;
   }
 }
 @media (max-width: 767px) {
@@ -275,9 +285,6 @@ ul {
     display: none;
   }
 
-  .promo {
-    padding: 24px 5% 0 5%;
-  }
   .promo__header {
     font-size: 35px;
   }
@@ -285,19 +292,31 @@ ul {
     font-size: 19px;
   }
 
-  .consultation {
-    padding: 100px 10% 0 10%;
-    display: flex;
+  .catalog__tabs {
     flex-direction: column;
-    justify-content: flex-start;
     align-items: center;
   }
-  .consultation__header {
-    text-align: center;
+  .catalog__content {
+    flex-wrap: none !important;
+    flex-direction: column !important;
   }
-  .consultation__subheader {
-    padding-right: 0;
-    text-align: center;
+  .catalog-item {
+    margin: 20px 0 0 0 !important;
+  }
+  .catalog__tab {
+    margin: 5px 0 0 0 !important;
+  }
+  .catalog__tab:nth-child(1) {
+    margin: 0 !important;
+  }
+
+  .feed__item {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center;
+  }
+  .feed__text {
+    margin: 0 0 0 0 !important;
   }
 }
 @media (max-width: 577px) {
@@ -308,8 +327,12 @@ ul {
     font-size: 17px;
   }
 
+  .consultation__wrapper {
+    padding: 0 0 0 29px;
+  }
+
   .promo {
-    padding: 24px 5% 0 5%;
+    padding: 24px 25px 25px 25px;
   }
   .promo__wrapper {
     align-items: center;
@@ -330,15 +353,51 @@ ul {
     padding: 3% 5% 0 5%;
   }
 
-  .button {
-    height: 17px;
+  .feed__subtitle {
+    margin-top: 10px;
+    text-align: center;
   }
-  .button_main {
-    margin-top: 35px;
-    height: 30px;
+  .feed__count {
+    text-align: center;
   }
+  .feed__item {
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+  .footer__info {
+    width: 320px !important;
+  }
+  .footer__social-item {
+    margin: 0 8px !important;
+  }
+}
+@media (max-width: 419px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+  }
+  .header__contacts {
+    display: none;
+  }
+
+  .consultation__form input {
+    width: 250px;
+  }
+
+  .catalog__wrapper {
+    width: 320px;
+  }
+
+  .feed__item {
+    width: 320px !important;
+  }
+  .feed__descr {
+    width: 320px !important;
+  }
+
   .button_submit {
-    height: 55px;
+    width: 250px;
   }
 }
 @font-face {
@@ -460,19 +519,22 @@ ul {
   justify-content: center;
 }
 .catalog__wrapper {
+  padding: 0 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .catalog__header {
+  margin: 0 auto;
   color: #000;
   font-family: "Museo Sans Cyrl";
   font-size: 30px;
   font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
 }
 .catalog__tabs {
   margin-top: 69px;
-  width: 680px;
   display: flex;
   justify-content: center;
 }
@@ -660,7 +722,7 @@ ul {
   opacity: 1;
 }
 .feed__text {
-  width: 650px;
+  max-width: 650px;
   margin-left: 61px;
 }
 .feed__subtitle {
